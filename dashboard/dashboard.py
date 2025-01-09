@@ -3,15 +3,9 @@ from dash import dcc, html, Input, Output
 import plotly.express as px
 import pandas as pd
 
-data_path = 'immo_data_202208_v2.csv'
+data_path = 'immo_data_large_cleaned.csv'
 data = pd.read_csv(data_path)
 
-data = data.dropna(subset=['price_cleaned', 'space_cleaned', 'lat', 'lon', 'gde_area_forest_percentage', 'type_unified'])
-print(data.columns)
-print(data.shape)
-
-data['price_cleaned'] = pd.to_numeric(data['price_cleaned'], errors='coerce')
-data['space_cleaned'] = pd.to_numeric(data['space_cleaned'], errors='coerce')
 
 app = dash.Dash(__name__)
 app.title = "Swiss Real Estate Dashboard"
